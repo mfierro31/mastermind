@@ -1,0 +1,15 @@
+h1, h3 {
+  text-align: center;
+}
+
+#rules-container {
+  display: flex;
+  justify-content: center;
+}
+
+#rules-container p {
+  width: 50%;
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
