@@ -1,3 +1,7 @@
-<div id="app-container">
+<div class="container" id="app-container">
   <app-header></app-header>
+  <app-board 
+    [code]="fourDigitCode"
+    (resetClick)="ngOnInit()"
+  ></app-board>
 </div>

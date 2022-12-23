@@ -13,6 +13,5 @@ export class ContainerComponent implements OnInit {
 
   async ngOnInit() {
     this.fourDigitCode = await this.containerService.getRandomCode();
-    console.log(this.fourDigitCode);
   }
 }
