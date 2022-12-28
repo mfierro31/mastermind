@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormSubmitEvent } from './board-row/models/form-submit-event.model';
 
 @Component({
   selector: 'app-board',
@@ -8,14 +9,20 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class BoardComponent {
   @Input() code: string[] = [];
 
-  @Output() resetClick: EventEmitter<void> = new EventEmitter<void>();
-
   remainingAttempts: number = 10;
-
-  array = Array;
+  attempts: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  currentAttempt: number = 1;
+  gameEnded: boolean = false;
 
   reset() {
-    this.remainingAttempts = 10;
-    this.resetClick.emit();
+    window.location.reload();
+  }
+
+  rowSubmit(formSubmitEvent: FormSubmitEvent) {
+    if (formSubmitEvent.won || formSubmitEvent.lost) {
+      this.gameEnded = true;
+    }
+    this.remainingAttempts -= 1;
+    this.currentAttempt += 1;
   }
 }

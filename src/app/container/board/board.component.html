@@ -1,7 +1,14 @@
 <div class="my-4" id="board-container">
   <h5 class="text-center mb-4">Remaining Attempts: {{remainingAttempts}}</h5>
   <div id="board-rows-container">
-    <app-board-row *ngFor="let i of array(10)"></app-board-row>
+    <app-board-row 
+      *ngFor="let attempt of attempts" 
+      [attempt]="attempt"
+      [currentAttempt]="currentAttempt"
+      [code]="code"
+      (formSubmit)="rowSubmit($event)"
+      [gameEnded]="gameEnded"
+    ></app-board-row>
   </div>
   <div id="reset-container">
     <button class="btn btn-danger" (click)="reset()">Reset Game</button>

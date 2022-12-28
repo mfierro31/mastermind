@@ -1,17 +1,31 @@
 <div class="mb-4">
-  <form class="row row-cols-lg-auto g-3 align-items-center">
-    <div *ngFor="let i of [1, 2, 3, 4]" class="col-2">
-      <label class="visually-hidden" for="num{{i}}">Number {{i}}</label>
-      <select class="form-select" id="num{{i}}">
-        <option selected>Select...</option>
+  <form class="row row-cols-lg-auto g-3 align-items-center" [formGroup]="codeForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let digit of [1, 2, 3, 4]" class="col-2">
+      <label class="visually-hidden" for="num{{digit}}">Number {{digit}}</label>
+      <!-- Have to use [attr.disabled] for the select elements instead of [disabled], because if an input element is 
+      part of a reactive form, it does not support the [disabled] property binding.  And setting disabled to false does
+      nothing, the only way to enable an input again after disabling it is to get rid of the attribute completely, which
+      is what setting it to null does -->
+      <select 
+        class="form-select" 
+        id="num{{digit}}" 
+        formControlName="num{{digit}}"
+      >
+        <option selected value="">Select...</option>
         <option *ngFor="let num of chooseableNums" [value]="num">{{num}}</option>
       </select>
     </div>
     <div class="col-2">
-      <button type="submit" class="btn btn-secondary">Submit</button>
+      <button 
+        type="submit" 
+        class="btn btn-secondary" 
+        [disabled]="currentAttempt !== attempt || !codeForm.valid || formSubmitted || gameEnded"
+      >
+        Submit
+      </button>
     </div>
   </form>
   <div>
-    Feedback: - - - -
+    Feedback: <span *ngFor="let fb of feedback">{{fb}} </span>
   </div>
 </div>
