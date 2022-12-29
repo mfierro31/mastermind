@@ -15,6 +15,8 @@ export class BoardComponent {
   gameEnded: boolean = false;
 
   reset() {
+    // to make page scroll back to top on refresh
+    window.history.scrollRestoration = 'manual';
     window.location.reload();
   }
 
