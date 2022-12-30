@@ -8,10 +8,12 @@ import { ContainerService } from './services/container.service';
 })
 export class ContainerComponent implements OnInit {
   fourDigitCode: string[] = [];
+  loading: boolean = true;
 
   constructor (private containerService: ContainerService) {}
 
   async ngOnInit() {
     this.fourDigitCode = await this.containerService.getRandomCode();
+    this.loading = false;
   }
 }

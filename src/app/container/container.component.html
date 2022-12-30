@@ -1,6 +1,8 @@
 <div class="container" id="app-container">
   <app-header></app-header>
-  <app-board 
+  <h6 *ngIf="loading" class="display-6 text-center mt-4"><strong>Generating code...</strong></h6>
+  <app-board
+    *ngIf="!loading" 
     [code]="fourDigitCode"
   ></app-board>
 </div>
