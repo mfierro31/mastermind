@@ -1,6 +1,6 @@
 <div class="mb-4">
   <form class="row g-3 align-items-center" [formGroup]="codeForm" (ngSubmit)="onSubmit()">
-    <div *ngFor="let digit of [1, 2, 3, 4]" class="col-2 col-2-override">
+    <div *ngFor="let digit of [1, 2, 3, 4]" class="col">
       <label class="visually-hidden" for="num{{digit}}">Number {{digit}}</label>
       <select 
         class="form-select" 
@@ -11,7 +11,7 @@
         <option *ngFor="let num of chooseableNums" [value]="num">{{num}}</option>
       </select>
     </div>
-    <div class="col-2 col-2-override">
+    <div class="col small-width-btn">
       <button 
         type="submit" 
         class="btn btn-secondary" 
