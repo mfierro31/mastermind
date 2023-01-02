@@ -11,7 +11,7 @@ export class BoardRowService {
 
   private sortFeedback(feedback: string[]) {
     // To make it more like the real board game, here we sort the feedback, so it's always in the following order
-    // (and so user's don't know which feedback corresponds to which guess): 1st - Correct number and correct position,
+    // (and so users don't know which feedback corresponds to which guess): 1st - Correct number and correct position,
     // 2nd - Correct number, but wrong position, 3rd - Incorrect number
     // Example:  ['CN', 'CNP', 'I', 'CNP'] gets sorted to -> ['CNP', 'CNP', 'CN', 'I']
     feedback.sort((a, b): number => {

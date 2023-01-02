@@ -1,27 +1,26 @@
 # Mastermind
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+Welcome to Mastermind:  A web version of the board game of the same name.
 
-## Development server
+I have created this project with Angular, splitting the app into 5 components: `app`, `container`, `header`, `board`, and `board-row`.  Separated business logic from `container` and `board-row` into their own services.  Also created a model for a unique object for typing purposes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Most of the heavy logic takes place in the `board-row` service.
 
-## Code scaffolding
+## Steps to run the project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone this repo to your local machine
+2. `cd` into the root folder of this project. `cd mastermind/`
+3. Run `npm install` to get all of the necessary dependencies for the project
+4. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`, or simply run `ng serve --open` to do both things at once. The application will automatically reload if you change any of the source files.
 
-## Build
+## Rules of the game
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The app, on page load, will generate a random set of 4 numbers.  Each of the 4 numbers can be any numbers between 0 and 7.  The object of the game is to guess the correct set of numbers in the correct order the app has them in.  So, if the set of numbers the app has chosen is "0, 2, 4, 6", you have to guess those exact same numbers in that exact same order.
 
-## Running unit tests
+You will be given 10 chances to do this.  Every time you submit a guess, you will be given feedback on each of the numbers you guessed.  **CNP** - stands for correct number in the correct position, **CN** - stands for correct number, but not in the correct position, and **I** - stands for incorrect, meaning the number does not exist in the set.  
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Note, however, that the feedback will be in an order that does not necessarily correspond to the order of the numbers you guessed.
 
-## Running end-to-end tests
+* For example, if the set of numbers the app generated is "0, 2, 4, 6" and you guessed "2, 0, 4, 6", your feedback will display as "CNP, CNP, CN, CN".  The feedback will always be in the order of: CNPs first, CNs second, Is third
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Once you win or lose, an alert will pop up, notifying you.  After that, all of the user inputs will be disabled, so you can scroll to the bottom of the page and click the "Reset Game" button to play another game.
